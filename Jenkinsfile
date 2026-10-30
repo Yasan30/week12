@@ -1,7 +1,7 @@
 pipeline {
-    agent any
-    options {
-        disableConcurrentBuilds()
+  agent any
+  options {
+    disableConcurrentBuilds()
     }
     environment {
         IMAGE_REPO = 'yasan30/week12'
