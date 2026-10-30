@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: week12
-          image: week12:v1
-          imagePullPolicy: IfNotPresent
+          image: yasan30/week12:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
