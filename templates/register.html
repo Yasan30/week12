@@ -1,28 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
+    <title>Registration Form</title>
 </head>
 <body>
+    <center>
+        <h2>Registration Form</h2>
+        <form action="/submit" method="POST"
+              onsubmit="return validateForm()">
+            <label>Username:</label>
+            <input type="text" name="username" id="username">
+            <br><br>
 
-    <h2>Student Registration Form</h2>
+            <label>Password:</label>
+            <input type="password" name="pwd" id="pwd">
+            <br><br>
 
-    <form action="/register" method="post">
+            <button type="submit" name="sb">Submit</button>
+        </form>
+    </center>
 
-        <label for="name">Student Name:</label><br>
-        <input type="text" id="name" name="student_name" required><br><br>
+    <script>
+        function validateForm() {
+            const username =
+                document.getElementById("username").value.trim();
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+            const password =
+                document.getElementById("pwd").value;
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+            if (username === "") {
+                alert("Username cannot be empty.");
+                return false;
+            }
 
-        <input type="submit" value="Register">
+            if (password === "") {
+                alert("Password cannot be empty.");
+                return false;
+            }
 
-    </form>
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
 
+            return true;
+        }
+    </script>
 </body>
 </html>
