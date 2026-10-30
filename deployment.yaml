@@ -1,13 +1,20 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: week12-service
+  name: week12-deployment
 spec:
-  type: NodePort
+  replicas: 1
   selector:
-    app: week12
-  ports:
-    - protocol: TCP
-      port: 5000
-      targetPort: 5000
-      nodePort: 30189
+    matchLabels:
+      app: week12
+  template:
+    metadata:
+      labels:
+        app: week12
+    spec:
+      containers:
+        - name: week12
+          image: yasan30/week12:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
